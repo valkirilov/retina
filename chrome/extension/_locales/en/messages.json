@@ -1,0 +1,11 @@
+{
+  "manifestExtName": {
+    "message": "Retina"
+  },
+  "manifestExtDescription": {
+    "message": "Retina description"
+  },
+  "manifestBrowserActionButton": {
+    "message": "Retina"
+  }
+}

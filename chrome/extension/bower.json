@@ -1,0 +1,22 @@
+{
+  "name": "retina-extension",
+  "version": "1",
+  "authors": [
+    "Valentin Kirilov <valentin.kirilov@gmail.com>"
+  ],
+  "description": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "moment": "~2.10.6",
+    "animate.css": "~3.4.0"
+  }
+}
