@@ -25,26 +25,90 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   }
 });
 
-var messageSendReminder = function(data) {
+var inFocus = true;  // global boolean to keep track of state
+chrome.windows.onFocusChanged.addListener(function(window) {
+  if (window == chrome.windows.WINDOW_ID_NONE) {
+    inFocus = false;
+  }
+  else {
+    inFocus = true;
+  }
+});
+
+var messageSendReminder = function(data, minutes) {
   chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { 
-      action: 'reminder', 
-      data: data, 
-      type: 'reminder'
-    });
+    sendNotificationReminder(minutes);
+    if (tabs[0]) {
+      chrome.tabs.sendMessage(tabs[0].id, { 
+        action: 'reminder', 
+        data: data, 
+        type: 'reminder'
+      });
+    }
   });
 };
 
 var messageSendTimeoutExpire = function(data) {
   chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { 
-      action: 'timer_expire', 
-      data: data, 
-      type: 'expire'
-    });
+    sendNotificationExpire(data);
+    if (tabs[0] ) {
+      chrome.tabs.sendMessage(tabs[0].id, { 
+        action: 'timer_expire', 
+        data: data, 
+        type: 'expire'
+      });  
+    }
   });
 };
 
+var sendNotificationReminder = function(minutes) {
+
+  var options = {
+    type: 'basic',
+    title: 'Retina reminds you',
+    priority: 1,
+  };
+
+  if (minutes === '15') {
+    options.iconUrl = chrome.extension.getURL('static/images/retina-15.png');
+    options.message = 'Keep yourself focused, the next break is close';
+  }
+  else if (minutes === '5') {
+    options.iconUrl = chrome.extension.getURL('static/images/retina-5.png');
+    options.message = 'Keep yourself focused, the next break is close';
+  }
+
+  chrome.notifications.create('retina-notification-reminder', options, function(id) { 
+    console.log("Last error:", chrome.runtime.lastError); 
+  });
+
+  playAudioNotification();
+};
+
+var sendNotificationExpire = function(data) {
+
+  var options = {
+    iconUrl: chrome.extension.getURL('static/images/retina-030.png'),
+    type: 'basic',
+    title: 'Retina reminds you',
+    message: 'Keep yourself focused, the next break is close',
+    priority: 1,
+  };
+
+  chrome.notifications.create('retina-notification-expire', options, function(id) { 
+    console.log("Last error:", chrome.runtime.lastError); 
+  });
+
+  playAudioNotification();
+};
+
+var playAudioNotification = function(){
+  var notificationSoundAlert = new Audio(chrome.extension.getURL('static/sounds/alert1.wav'));
+  var notificationSoundTick = new Audio(chrome.extension.getURL('static/sounds/tick.wav'));
+
+  notificationSoundAlert.play();
+  notificationSoundTick.play();
+};
 
 var RetinaExtensionBackground = (function() {
 
@@ -66,6 +130,8 @@ var RetinaExtensionBackground = (function() {
   var timeoutExpired = function() {
 
     currentTimeout = setTimeout(function() {
+
+      //sendNotificationReminder();
       
       var timeLeft = expireDate.diff(moment());
     
@@ -75,10 +141,10 @@ var RetinaExtensionBackground = (function() {
           sendTimeoutExpire();
         }
         else if (secondsLeft >= 275 && secondsLeft <= 300) {
-          sendReminder();
+          sendReminder('5');
         }
         else if (secondsLeft >= 875 && secondsLeft <= 900) {
-          sendReminder();
+          sendReminder('15');
         }
       }
 
@@ -105,9 +171,9 @@ var RetinaExtensionBackground = (function() {
     }
   };
 
-  var sendReminder = function() {
+  var sendReminder = function(minutes) {
     var data = getTimer();
-    messageSendReminder(data);
+    messageSendReminder(data, minutes);
   };
 
   var sendTimeoutExpire = function() {

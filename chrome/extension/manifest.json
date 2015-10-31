@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "__MSG_manifestExtName__",
-  "version": "0.0.1",
+  "version": "0.0.2",
   
   "default_locale": "en",
   
@@ -26,7 +26,6 @@
       "js": [ 
         "static/bower_components/jquery/dist/jquery.min.js", 
         "static/bower_components/moment/moment.js", 
-        "static/bower_components/bootstrap/dist/js/bootstrap.min.js", 
 
         "static/scripts/main.js",
         "static/scripts/extension.js",
@@ -49,6 +48,7 @@
   "permissions": [ 
     "cookies", 
     "storage", 
+    "notifications",
     "tabs", 
     "http://*/*", 
     "https://*/*" 
@@ -56,7 +56,17 @@
   
   "web_accessible_resources": [
     "manifest.json",
-    "static/styles/fonts/fff-forward/FFFFORWA.TTF"
+    "static/styles/fonts/fff-forward/FFFFORWA.TTF",
+    "static/styles/fonts/ds_digital/DS-DIGIB.TTF",
+
+    "static/images/retina-15.png",
+
+    "static/sounds/alert.flac",
+    "static/sounds/alert.wav",
+    "static/sounds/alert1.wav",
+    "static/sounds/alert2.wav",
+    "static/sounds/tick.wav",
+    "static/sounds/new-timer.wav"
   ]
   
 }

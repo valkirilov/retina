@@ -8,12 +8,12 @@
 @color-timer-expired: #FF4136;
 
 @font-face {
-  font-family: fffforwrd;
-  src: url('chrome-extension://nakjnidkhkjkjhdppenflmciacfkccjl/static/styles/fonts/fff-forward/FFFFORWA.TTF');
+  font-family: ds_digital;
+  src: url('chrome-extension://nakjnidkhkjkjhdppenflmciacfkccjl/static/styles/fonts/ds_digital/DS-DIGIB.TTF');
 }
 
 .fontPixel {
-  font-family: fffforwrd;
+  font-family: ds_digital;
 }
 
 #retina-extension-d08061708cf2e5299af9ae0b609a376a *,
@@ -76,7 +76,7 @@
     background: @color-default !important;
     width: 150px !important;
 
-    padding: 28px 20px 20px 20px !important;
+    padding: 10px !important;
 
     top: 21px !important;
     right: 21px;
@@ -105,6 +105,10 @@
 
   &.color-timer-15minutes {
     background: @color-timer-15minutes !important;
+    
+    .timer {
+      color: @color-default !important;
+    }
   }
 
   &.color-timer-5minutes {
@@ -121,8 +125,9 @@
   .timer {
     color: #ffffff !important;
     text-align: center !important;
-    .font-size(21) !important;
-    .line-height(21) !important;
+    .font-size(27) !important;
+    .line-height(27) !important;
+    font-weight: bold !important;
     letter-spacing: 5px !important;
     .text-shadow() !important;
     .fontPixel() !important;

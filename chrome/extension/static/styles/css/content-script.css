@@ -1,9 +1,9 @@
 @font-face {
-  font-family: fffforwrd;
-  src: url('chrome-extension://nakjnidkhkjkjhdppenflmciacfkccjl/static/styles/fonts/fff-forward/FFFFORWA.TTF');
+  font-family: ds_digital;
+  src: url('chrome-extension://nakjnidkhkjkjhdppenflmciacfkccjl/static/styles/fonts/ds_digital/DS-DIGIB.TTF');
 }
 .fontPixel {
-  font-family: fffforwrd;
+  font-family: ds_digital;
 }
 #retina-extension-d08061708cf2e5299af9ae0b609a376a *,
 #retina-extension-d08061708cf2e5299af9ae0b609a376a .cb_reset {
@@ -64,7 +64,7 @@
 #retina-extension-d08061708cf2e5299af9ae0b609a376a.pinned {
   background: #001f3f !important;
   width: 150px !important;
-  padding: 28px 20px 20px 20px !important;
+  padding: 10px !important;
   top: 21px !important;
   right: 21px;
   position: fixed !important;
@@ -88,6 +88,9 @@
 #retina-extension-d08061708cf2e5299af9ae0b609a376a.color-timer-15minutes {
   background: #ffdc00 !important;
 }
+#retina-extension-d08061708cf2e5299af9ae0b609a376a.color-timer-15minutes .timer {
+  color: #001f3f !important;
+}
 #retina-extension-d08061708cf2e5299af9ae0b609a376a.color-timer-5minutes {
   background: #ff851b !important;
 }
@@ -97,14 +100,15 @@
 #retina-extension-d08061708cf2e5299af9ae0b609a376a .timer {
   color: #ffffff !important;
   text-align: center !important;
-  font-size: 21px !important;
-  font-size: 2.1rem !important;
-  line-height: 21px !important;
-  line-height: 2.1rem !important;
+  font-size: 27px !important;
+  font-size: 2.7rem !important;
+  line-height: 27px !important;
+  line-height: 2.7rem !important;
+  font-weight: bold !important;
   letter-spacing: 5px !important;
   -webkit-text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
-  font-family: fffforwrd !important;
+  font-family: ds_digital !important;
 }
 #retina-extension-d08061708cf2e5299af9ae0b609a376a.fullscreen .timer {
   margin: 21% auto !important;

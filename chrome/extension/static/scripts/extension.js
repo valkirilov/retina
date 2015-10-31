@@ -186,6 +186,11 @@ var RetinaExtension = (function() {
 
     timerTick();
     setTimeoutClose();
+
+    var soundNewTimer = new Audio(chrome.extension.getURL('static/sounds/new-timer.wav'));
+    var soundTick = new Audio(chrome.extension.getURL('static/sounds/tick.wav'));
+    soundNewTimer.play();
+    soundTick.play();
   };
 
   var startBrake = function() {
