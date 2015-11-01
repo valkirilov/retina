@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "__MSG_manifestExtName__",
-  "version": "0.0.2",
+  "version": "0.0.3",
   
   "default_locale": "en",
   
@@ -10,7 +10,7 @@
   "icons": { 
     //"16": "static/images/manifest/16x16.png", 
     //"48": "static/images/manifest/48x48.png", 
-    //"128": "static/images/manifest/128x128.png" 
+    "128": "static/images/logo/logo-black.png" 
   },
   
   "browser_action": {
@@ -59,7 +59,11 @@
     "static/styles/fonts/fff-forward/FFFFORWA.TTF",
     "static/styles/fonts/ds_digital/DS-DIGIB.TTF",
 
-    "static/images/retina-15.png",
+    "static/images/notifications/retina-start.png",
+    "static/images/notifications/retina-rest.png",
+    "static/images/notifications/retina-reminder1.png",
+    "static/images/notifications/retina-reminder2.png",
+    "static/images/notifications/retina-reminder3.png",
 
     "static/sounds/alert.flac",
     "static/sounds/alert.wav",
